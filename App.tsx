@@ -1,9 +1,19 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  NativeStackScreenProps,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack';
 
-function HomeScreen({navigation}) {
+type RootStackParamList = {
+  Home: undefined;
+  Details: undefined;
+};
+
+type ScreenProps = NativeStackScreenProps<RootStackParamList>;
+
+function HomeScreen({navigation}: ScreenProps) {
   return (
     <View style={styles.homeScreen}>
       <Text>Home Screen</Text>
@@ -15,7 +25,7 @@ function HomeScreen({navigation}) {
   );
 }
 
-function DetailsScreen({navigation}) {
+function DetailsScreen({navigation}: ScreenProps) {
   return (
     <View style={styles.detailsScreen}>
       <Text>Details Screen</Text>
@@ -33,7 +43,7 @@ function DetailsScreen({navigation}) {
   );
 }
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): React.JSX.Element {
   return (
