@@ -6,8 +6,8 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import {Provider} from 'react-redux';
-import {store} from './store';
-import useTheme from './theme/useTheme';
+import {store} from './src/redux/store';
+import useTheme from './src/theme/useTheme';
 
 type RootStackParamList = {
   Home: undefined;

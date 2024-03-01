@@ -3,7 +3,7 @@ import {expect, test} from '@jest/globals';
 import {act, renderHook} from '@testing-library/react-native';
 import useTheme from './useTheme';
 import {Provider} from 'react-redux';
-import {store} from '../store';
+import {store} from '../redux/store';
 
 test('다크모드 라이트모드 상태가 바뀌어야 한다', () => {
   const wrapper = ({children}: PropsWithChildren) => (
