@@ -1,10 +1,13 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View, Switch} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
+import {Provider} from 'react-redux';
+import {store} from './store';
+import useTheme from './theme/useTheme';
 
 type RootStackParamList = {
   Home: undefined;
@@ -14,9 +17,19 @@ type RootStackParamList = {
 type ScreenProps = NativeStackScreenProps<RootStackParamList>;
 
 function HomeScreen({navigation}: ScreenProps) {
+  const {color, isDarkMode, toggleDarkMode} = useTheme();
+
   return (
-    <View style={styles.homeScreen}>
+    <View
+      style={[
+        styles.homeScreen,
+        {
+          backgroundColor: color.background.primary,
+        },
+      ]}>
       <Text>Home Screen</Text>
+      <Switch value={isDarkMode} onValueChange={toggleDarkMode} />
+      <Text>현재 모드: {isDarkMode ? 'dark' : 'light'}</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
@@ -47,16 +60,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{title: 'Overview'}}
-        />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{title: 'Overview'}}
+          />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
