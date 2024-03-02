@@ -17,14 +17,14 @@ type RootStackParamList = {
 type ScreenProps = NativeStackScreenProps<RootStackParamList>;
 
 function HomeScreen({navigation}: ScreenProps) {
-  const {color, isDarkMode, toggleDarkMode} = useTheme();
+  const {theme, isDarkMode, toggleDarkMode} = useTheme();
 
   return (
     <View
       style={[
         styles.homeScreen,
         {
-          backgroundColor: color.background.primary,
+          backgroundColor: theme.color.background.primary,
         },
       ]}>
       <Text>Home Screen</Text>
