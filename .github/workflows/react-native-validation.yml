@@ -1,5 +1,5 @@
 name: React Native Code Validation
-run-name: '${{ github.actor }}님이 GitHub Actions를 통해 검증 작업을 수행 중입니다 🚀'
+run-name: "${{ github.actor }}님이 GitHub Actions를 통해 검증 작업을 수행 중입니다 🚀"
 
 on: [pull_request]
 
