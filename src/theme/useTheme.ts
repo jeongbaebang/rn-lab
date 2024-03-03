@@ -1,6 +1,6 @@
-import {useCallback} from 'react';
-import {useAppDispatch, useAppSelector} from '../hooks/useAppRedux';
-import {toggleDarkMode} from './themeSlice';
+import { useCallback } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks/useAppRedux'
+import { toggleDarkMode } from './themeSlice'
 
 /**
  * `useTheme` 훅을 사용하여 애플리케이션의 테마 상태를 관리합니다.
@@ -31,12 +31,12 @@ import {toggleDarkMode} from './themeSlice';
  * ```
  */
 function useTheme() {
-  const dispatch = useAppDispatch();
-  const {isDarkMode, styleSystem} = useAppSelector(state => state.theme);
-  const mode = isDarkMode ? 'dark' : 'light';
+  const dispatch = useAppDispatch()
+  const { isDarkMode, styleSystem } = useAppSelector((state) => state.theme)
+  const mode = isDarkMode ? 'dark' : 'light'
   const dispatchToggleDarkMode = useCallback(() => {
-    dispatch(toggleDarkMode());
-  }, [dispatch]);
+    dispatch(toggleDarkMode())
+  }, [dispatch])
 
   return {
     toggleDarkMode: dispatchToggleDarkMode,
@@ -45,7 +45,7 @@ function useTheme() {
       font: styleSystem.font,
       color: styleSystem.color[mode],
     },
-  };
+  }
 }
 
-export default useTheme;
+export default useTheme

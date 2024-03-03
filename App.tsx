@@ -1,23 +1,23 @@
-import React from 'react';
-import {Button, StyleSheet, Text, View, Switch} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import React from 'react'
+import { Button, StyleSheet, Text, View, Switch } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
 import {
   NativeStackScreenProps,
   createNativeStackNavigator,
-} from '@react-navigation/native-stack';
-import {Provider} from 'react-redux';
-import {store} from './src/redux/store';
-import useTheme from './src/theme/useTheme';
+} from '@react-navigation/native-stack'
+import { Provider } from 'react-redux'
+import { store } from './src/redux/store'
+import useTheme from './src/theme/useTheme'
 
 type RootStackParamList = {
-  Home: undefined;
-  Details: undefined;
-};
+  Home: undefined
+  Details: undefined
+}
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList>;
+type ScreenProps = NativeStackScreenProps<RootStackParamList>
 
-function HomeScreen({navigation}: ScreenProps) {
-  const {theme, isDarkMode, toggleDarkMode} = useTheme();
+function HomeScreen({ navigation }: ScreenProps) {
+  const { theme, isDarkMode, toggleDarkMode } = useTheme()
 
   return (
     <View
@@ -35,10 +35,10 @@ function HomeScreen({navigation}: ScreenProps) {
         onPress={() => navigation.navigate('Details')}
       />
     </View>
-  );
+  )
 }
 
-function DetailsScreen({navigation}: ScreenProps) {
+function DetailsScreen({ navigation }: ScreenProps) {
   return (
     <View style={styles.detailsScreen}>
       <Text>Details Screen</Text>
@@ -53,10 +53,10 @@ function DetailsScreen({navigation}: ScreenProps) {
         onPress={() => navigation.popToTop()}
       />
     </View>
-  );
+  )
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function App(): React.JSX.Element {
   return (
@@ -66,13 +66,13 @@ function App(): React.JSX.Element {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{title: 'Overview'}}
+            options={{ title: 'Overview' }}
           />
           <Stack.Screen name="Details" component={DetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -88,6 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'pink',
   },
-});
+})
 
-export default App;
+export default App
