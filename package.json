@@ -7,10 +7,10 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint: check": "eslint .",
-    "lint: fix": "eslint . --fix",
-    "prettier: check": "prettier --check .",
-    "prettier: format": "prettier --write ."
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier:check": "prettier --check .",
+    "prettier:format": "prettier --write ."
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.12",
