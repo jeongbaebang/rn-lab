@@ -31,7 +31,7 @@ import { toggleDarkMode } from './themeSlice'
  * ```
  */
 
-function useTheme() {
+const useTheme = () => {
   const dispatch = useAppDispatch()
   const { isDarkMode, styleSystem } = useAppSelector((state) => state.theme)
   const mode = isDarkMode ? 'dark' : 'light'

@@ -16,7 +16,7 @@ type RootStackParamList = {
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList>
 
-function HomeScreen({ navigation }: ScreenProps) {
+const HomeScreen = ({ navigation }: ScreenProps) => {
   const { theme, isDarkMode, toggleDarkMode } = useTheme()
 
   return (
@@ -38,7 +38,7 @@ function HomeScreen({ navigation }: ScreenProps) {
   )
 }
 
-function DetailsScreen({ navigation }: ScreenProps) {
+const DetailsScreen = ({ navigation }: ScreenProps) => {
   return (
     <View style={styles.detailsScreen}>
       <Text>Details Screen</Text>
@@ -58,7 +58,7 @@ function DetailsScreen({ navigation }: ScreenProps) {
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
-function App(): React.JSX.Element {
+const App = (): React.JSX.Element => {
   return (
     <Provider store={store}>
       <NavigationContainer>
