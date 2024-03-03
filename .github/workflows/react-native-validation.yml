@@ -1,13 +1,15 @@
-name: React Native validation
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: React Native Code Validation
+
 on: [push]
 
 jobs:
   validation:
+    name: Code Quality and Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'yarn'
@@ -15,11 +17,11 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Run Jest Tests
+      - name: Run Unit Tests with Jest
         run: yarn run test
 
-      - name: Check ESLint
+      - name: ESLint Check
         run: yarn run lint:check
 
-      - name: Check Prettier
+      - name: Prettier Format Check
         run: yarn run prettier:check
