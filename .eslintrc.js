@@ -22,5 +22,6 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
+    'func-style': ['error', 'expression'], // 표현식
   },
 }
