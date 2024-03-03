@@ -76,17 +76,15 @@ function App(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  homeScreen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'powderblue',
-  },
   detailsScreen: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'pink',
+  },
+  homeScreen: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
   },
 })
 

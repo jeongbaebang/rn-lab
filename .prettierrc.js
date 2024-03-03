@@ -11,9 +11,6 @@ module.exports = {
   // 화살표 함수에서 단일 매개변수에 괄호를 사용하지 않음
   arrowParens: 'always',
 
-  // HTML, JSX에서 닫는 괄호를 새로운 줄에 배치하지 않음
-  jsxBracketSameLine: false,
-
   // JSX에서 작은따옴표 대신 큰따옴표 사용
   jsxSingleQuote: false,
 
