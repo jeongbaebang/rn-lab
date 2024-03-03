@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "test": "jest",
+    "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
     "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier:check": "prettier --check .",
