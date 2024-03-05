@@ -8,6 +8,7 @@ import {
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import useTheme from './theme/useTheme'
+import { BoxWithLog } from './components/Box'
 
 type RootStackParamList = {
   Home: undefined
@@ -27,6 +28,7 @@ const HomeScreen = ({ navigation }: ScreenProps) => {
           backgroundColor: theme.color.background.primary,
         },
       ]}>
+      <BoxWithLog msg="bang" />
       <Text>Home Screen</Text>
       <Switch value={isDarkMode} onValueChange={toggleDarkMode} />
       <Text>현재 모드: {isDarkMode ? 'dark' : 'light'}</Text>
