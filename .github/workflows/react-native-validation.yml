@@ -1,0 +1,29 @@
+name: React Native Code Validation
+run-name: '${{ github.actor }}님이 GitHub Actions를 통해 검증 작업을 수행 중입니다 🚀'
+
+on: [pull_request]
+
+jobs:
+  validation:
+    name: Code Quality and Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Run Unit Tests with Jest
+        run: yarn run test
+
+      - name: ESLint Check
+        run: yarn run lint:check
+
+      - name: Prettier Format Check
+        run: yarn run prettier:check
