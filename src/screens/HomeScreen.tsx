@@ -12,7 +12,7 @@ import { LinkToBox } from '../components/Box'
  */
 const HomeScreen = (_props: ScreenProps) => {
   const { theme, isDarkMode, toggleDarkMode } = useTheme()
-  const LinkToDetailBox = LinkToBox('Detail')
+  const LinkToDetailBox = LinkToBox('List')
   const LinkToNotificationBox = LinkToBox('Notification')
 
   return (

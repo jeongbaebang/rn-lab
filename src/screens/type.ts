@@ -8,7 +8,7 @@ declare global {
 
 export type RootStackParamList = {
   Home: undefined
-  Detail: undefined
+  List: undefined
   Notification: {
     channel: string
   }
