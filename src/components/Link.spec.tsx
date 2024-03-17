@@ -27,7 +27,7 @@ describe('Link Component', () => {
     return <Text>{text}</Text>
   }
 
-  test('Link 컴포넌트는 전달된 컴포넌트를 감싸는 HOC 형태를 띄고 있어야 한다.', () => {
+  test('Link 컴포넌트는 주어진 컴포넌트를 HOC로 감싸며, 렌더링 시 해당 컴포넌트를 정상적으로 표시해야 한다.', () => {
     const NewComponent = Link(TestComponent, expectedLink)
 
     render(<NewComponent />)
@@ -35,7 +35,7 @@ describe('Link Component', () => {
     expect(screen.getByText(childrenText)).toBeOnTheScreen()
   })
 
-  test('터치 이벤트가 발생하면 컴포넌트는 지정한 네비게이터를 호출해야 한다.', async () => {
+  test('사용자가 컴포넌트를 터치할 경우, Link 컴포넌트는 지정된 경로로의 네비게이션을 수행해야 한다.', async () => {
     const user = userEvent.setup()
     const NewComponent = Link(TestComponent, expectedLink)
     const TargetComponent = render(<NewComponent />).getByText(childrenText)
@@ -45,7 +45,7 @@ describe('Link Component', () => {
     expect(mockedNavigate).toHaveBeenCalledWith(expectedLink)
   })
 
-  test('props를 전달하면 자식 컴포넌트를 올바르게 렌더링 되어야 한다.', () => {
+  test('props가 전달되었을 때, 자식 컴포넌트는 전달받은 props를 사용하여 정상적으로 렌더링되어야 한다.', () => {
     const childrenProps = 'new children Props'
     const NewComponent = Link(TestComponentWithProps, expectedLink)
 
@@ -56,7 +56,7 @@ describe('Link Component', () => {
     expect(TargetComponent).toBeOnTheScreen()
   })
 
-  test('파라미터를 전달한다면 네비게이터가 호출될떄 파라미터 인자를 포함하고 있어야 한다.', async () => {
+  test('네비게이션 수행 시, Link 컴포넌트에 전달된 추가 파라미터는 네비게이터 함수 호출에 포함되어야 한다.', async () => {
     const user = userEvent.setup()
     const childrenProps = 'new children Props'
     const newParm = {
