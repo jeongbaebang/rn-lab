@@ -36,10 +36,11 @@ const HomeScreen = (_props: ScreenProps) => {
 
 const styles = StyleSheet.create({
   boxContainer: {
+    flexWrap: 'wrap',
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    marginTop: 5,
+    gap: 10,
+    justifyContent: 'center',
     width: '100%',
   },
 
