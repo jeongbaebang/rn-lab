@@ -25,4 +25,10 @@ const App = () => {
   )
 }
 
-export default App
+let AppEntryPoint = App
+
+if (process.env.STORYBOOK_ENABLED) {
+  AppEntryPoint = require('./.ondevice').default
+}
+
+export default AppEntryPoint
