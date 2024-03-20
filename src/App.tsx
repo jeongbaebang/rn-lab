@@ -11,6 +11,7 @@ import Notification from './screens/Notification'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
+//d
 const App = () => {
   return (
     <Provider store={store}>
@@ -28,7 +29,7 @@ const App = () => {
 let AppEntryPoint = App
 
 if (process.env.STORYBOOK_ENABLED) {
-  AppEntryPoint = require('./.ondevice').default
+  AppEntryPoint = require('../.storybook').default
 }
 
 export default AppEntryPoint
