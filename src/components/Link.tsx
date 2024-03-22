@@ -6,21 +6,16 @@ import { RootStackParamList, ScreenList } from '../screens/type'
 
 type ComponentProps<P> = P & JSX.IntrinsicAttributes
 
-const Link = <P, K extends ScreenList>(
+const Link = <P, L extends ScreenList>(
   Component: ComponentType<P>,
-  link: K,
-  screenParams?: RootStackParamList[K],
+  link: L,
+  screenParams?: RootStackParamList[L],
 ) => {
   return function HOC_Link(props: ComponentProps<P>) {
     const navigation = useNavigation()
     const navigateToScreen = () => {
-      if (screenParams !== undefined) {
-        // @ts-ignore
-        navigation.navigate(link, screenParams)
-      } else {
-        // @ts-ignore
-        navigation.navigate(link)
-      }
+      // @ts-ignore
+      navigation.navigate(link, screenParams)
     }
 
     return (

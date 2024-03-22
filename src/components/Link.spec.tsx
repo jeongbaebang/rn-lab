@@ -42,7 +42,7 @@ describe('Link Component', () => {
 
     await user.press(TargetComponent)
 
-    expect(mockedNavigate).toHaveBeenCalledWith(expectedLink)
+    expect(mockedNavigate).toHaveBeenCalledWith(expectedLink, undefined)
   })
 
   test('props가 전달되었을 때, 자식 컴포넌트는 전달받은 props를 사용하여 정상적으로 렌더링되어야 한다.', () => {

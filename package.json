@@ -6,6 +6,7 @@
     "test": "jest",
     "start": "react-native start",
     "debugging": "react-native start --experimental-debugger",
+    "devTools": "npx react-devtools",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint:check": "eslint .",

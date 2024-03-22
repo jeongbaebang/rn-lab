@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Switch } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import useTheme from '../theme/useTheme'
 import { ScreenProps } from './type'
@@ -11,8 +11,8 @@ import { LinkToBox } from '@components/Box'
  * 1. 페이지 네비게이션 HOC 구성 해보기 [v]
  */
 const HomeScreen = (_props: ScreenProps) => {
-  const { theme, isDarkMode, toggleDarkMode } = useTheme()
-  const LinkToDetailBox = LinkToBox('List')
+  const { theme } = useTheme()
+  const LinkToSettingBox = LinkToBox('Settings')
   const LinkToNotificationBox = LinkToBox('Notification')
 
   return (
@@ -23,11 +23,8 @@ const HomeScreen = (_props: ScreenProps) => {
           backgroundColor: theme.color.background.primary,
         },
       ]}>
-      <Text>Home Screen</Text>
-      <Switch value={isDarkMode} onValueChange={toggleDarkMode} />
-      <Text>현재 모드: {isDarkMode ? 'dark' : 'light'}</Text>
       <View style={styles.boxContainer}>
-        <LinkToDetailBox text="goDetail" />
+        <LinkToSettingBox text="goSetting" />
         <LinkToNotificationBox text="goNotification" />
       </View>
     </View>
