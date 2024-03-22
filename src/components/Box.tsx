@@ -1,10 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+
 import WithLog from './Withlog'
 import Link from './Link'
 import { RootStackParamList, ScreenList } from '../screens/type'
 
-const Box = ({ text }: { text: string }) => {
+type Props = { text: string }
+
+const Box: React.FC<Props> = ({ text }) => {
   return (
     <View style={styles.box}>
       <Text style={styles.boxFont}>{text}</Text>

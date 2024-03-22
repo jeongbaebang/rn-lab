@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Switch } from 'react-native'
 
 import useTheme from '../theme/useTheme'
 import { ScreenProps } from './type'
-import { LinkToBox } from '../components/Box'
+import { LinkToBox } from '@components/Box'
 
 /**
  * TODO
