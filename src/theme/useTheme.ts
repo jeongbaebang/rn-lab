@@ -1,6 +1,11 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
+
 import { useAppDispatch, useAppSelector } from '../hooks/useAppRedux'
-import { toggleDarkMode } from './themeSlice'
+import {
+  updateIsUseSystemColorScheme,
+  updateLocalColorScheme,
+} from './themeSlice'
+import { useColorScheme } from 'react-native'
 
 /**
  * `useTheme` 훅을 사용하여 애플리케이션의 테마 상태를 관리합니다.
@@ -32,19 +37,40 @@ import { toggleDarkMode } from './themeSlice'
  */
 
 const useTheme = () => {
+  const colorScheme = useColorScheme()
   const dispatch = useAppDispatch()
-  const { isDarkMode, styleSystem } = useAppSelector((state) => state.theme)
-  const mode = isDarkMode ? 'dark' : 'light'
-  const dispatchToggleDarkMode = useCallback(() => {
-    dispatch(toggleDarkMode())
+  const { localColorScheme, styleSystem, isSystemColorScheme } = useAppSelector(
+    (state) => state.theme,
+  )
+  const isDarkMode = localColorScheme === 'dark'
+  const dispatchLightColorScheme = useCallback(() => {
+    dispatch(updateLocalColorScheme('light'))
+  }, [dispatch])
+  const dispatchDarkColorScheme = useCallback(() => {
+    dispatch(updateLocalColorScheme('dark'))
+  }, [dispatch])
+  const dispatchSystemColorScheme = useCallback(() => {
+    dispatch(updateIsUseSystemColorScheme())
   }, [dispatch])
 
+  useEffect(() => {
+    if (isSystemColorScheme) {
+      dispatch(updateLocalColorScheme(colorScheme))
+    }
+  }, [dispatch, isSystemColorScheme, colorScheme])
+
   return {
-    toggleDarkMode: dispatchToggleDarkMode,
-    isDarkMode: isDarkMode,
+    colorScheme: {
+      isDarkMode,
+      isSystemColorScheme,
+      colorScheme: localColorScheme,
+      onDarkMode: dispatchDarkColorScheme,
+      onLightMode: dispatchLightColorScheme,
+      onSystemColorScheme: dispatchSystemColorScheme,
+    },
     theme: {
       font: styleSystem.font,
-      color: styleSystem.color[mode],
+      color: styleSystem.color[localColorScheme],
     },
   }
 }

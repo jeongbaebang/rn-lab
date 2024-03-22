@@ -1,14 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { Appearance } from 'react-native'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { Appearance, ColorSchemeName } from 'react-native'
 import styleSystem, { Style } from './style'
 
-export interface ThemeState {
-  isDarkMode: boolean
+type ColorScheme = 'light' | 'dark'
+
+type ThemeState = {
+  isSystemColorScheme: boolean
+  localColorScheme: ColorScheme
   styleSystem: Style
 }
 
+const initialColorScheme = Appearance.getColorScheme()
 const initialState: ThemeState = {
-  isDarkMode: Appearance.getColorScheme() === 'dark', // 초기 디바이스 상태
+  isSystemColorScheme: true,
+  localColorScheme: initialColorScheme || 'light',
   styleSystem: styleSystem,
 }
 
@@ -16,13 +21,16 @@ export const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    toggleDarkMode: (state) => {
-      state.isDarkMode = !state.isDarkMode
+    updateLocalColorScheme: (state, action: PayloadAction<ColorSchemeName>) => {
+      state.localColorScheme = action.payload || 'light' // 기본값 지정
+    },
+    updateIsUseSystemColorScheme: (state) => {
+      state.isSystemColorScheme = !state.isSystemColorScheme
     },
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { toggleDarkMode } = themeSlice.actions
+export const { updateIsUseSystemColorScheme, updateLocalColorScheme } =
+  themeSlice.actions
 
 export default themeSlice.reducer
