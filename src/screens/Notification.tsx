@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import React from 'react';
 
 /**
  * 알림 구성 페이지
@@ -9,7 +9,7 @@ const Notification = () => {
     <View>
       <Text>Notification</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Notification
+export default Notification;

@@ -1,18 +1,18 @@
-import React, { ComponentType, useEffect } from 'react'
+import React, { ComponentType, useEffect } from 'react';
 
 // JSX.IntrinsicAttributes를 포함하는 Props 타입을 재사용 가능하게 정의
-type IntrinsicProps<P> = P & JSX.IntrinsicAttributes
+type IntrinsicProps<P> = P & JSX.IntrinsicAttributes;
 
 export default function WithLog<P>(
   Component: ComponentType<P>,
 ): ComponentType<IntrinsicProps<P>> {
   return function HOC(props: IntrinsicProps<P>) {
     useEffect(() => {
-      console.log('Component is rendered or updated with props:', props)
-    }, [props])
+      console.log('Component is rendered or updated with props:', props);
+    }, [props]);
 
-    return <Component {...props} />
-  }
+    return <Component {...props} />;
+  };
 }
 
 // const withHook = <P,>(useHook: (props: P) => void) => {

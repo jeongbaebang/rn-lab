@@ -1,19 +1,19 @@
 interface Font {
-  title1: number
-  body: number
+  title1: number;
+  body: number;
 }
 
 interface Color {
   background: {
-    primary: string
-  }
+    primary: string;
+  };
 }
 
 export interface Style {
-  font: Font
+  font: Font;
   color: {
-    [Key in 'dark' | 'light']: Color
-  }
+    [Key in 'dark' | 'light']: Color;
+  };
 }
 
 const styleSystem: Style = {
@@ -33,6 +33,6 @@ const styleSystem: Style = {
       },
     },
   },
-}
+};
 
-export default styleSystem
+export default styleSystem;
