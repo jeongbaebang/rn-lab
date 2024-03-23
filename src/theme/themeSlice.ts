@@ -1,36 +1,36 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { Appearance, ColorSchemeName } from 'react-native'
-import styleSystem, { Style } from './style'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Appearance, ColorSchemeName } from 'react-native';
+import styleSystem, { Style } from './style';
 
-export type ColorScheme = 'light' | 'dark'
+export type ColorScheme = 'light' | 'dark';
 
 type ThemeState = {
-  isSystemColorScheme: boolean
-  localColorScheme: ColorScheme
-  styleSystem: Style
-}
+  isSystemColorScheme: boolean;
+  localColorScheme: ColorScheme;
+  styleSystem: Style;
+};
 
-const initialColorScheme = Appearance.getColorScheme()
+const initialColorScheme = Appearance.getColorScheme();
 const initialState: ThemeState = {
   isSystemColorScheme: true,
   localColorScheme: initialColorScheme || 'light',
   styleSystem: styleSystem,
-}
+};
 
 export const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
     updateLocalColorScheme: (state, action: PayloadAction<ColorSchemeName>) => {
-      state.localColorScheme = action.payload || 'light' // 기본값 지정
+      state.localColorScheme = action.payload || 'light'; // 기본값 지정
     },
-    onSystemColorScheme: (state) => {
-      state.isSystemColorScheme = !state.isSystemColorScheme
+    onSystemColorScheme: (state, action: PayloadAction<boolean>) => {
+      state.isSystemColorScheme = action.payload;
     },
   },
-})
+});
 
 export const { onSystemColorScheme, updateLocalColorScheme } =
-  themeSlice.actions
+  themeSlice.actions;
 
-export default themeSlice.reducer
+export default themeSlice.reducer;

@@ -1,23 +1,23 @@
-import React from 'react'
+import React from 'react';
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
-} from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { RootStackParamList } from './type'
-import HomeScreen from './HomeScreen'
-import Settings from './Settings'
-import Notification from './Notification'
-import useTheme from '../theme/useTheme'
+import { RootStackParamList } from './type';
+import HomeScreen from './HomeScreen';
+import Settings from './Settings';
+import Notification from './Notification';
+import useTheme from '../theme/useTheme';
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Router = () => {
   const {
     colorScheme: { isDarkMode },
-  } = useTheme()
+  } = useTheme();
 
   return (
     <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
@@ -27,7 +27,7 @@ const Router = () => {
         <Stack.Screen name="Notification" component={Notification} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default Router
+export default Router;

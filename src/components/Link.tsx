@@ -1,10 +1,10 @@
-import React, { ComponentType } from 'react'
-import { Pressable, View } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import React, { ComponentType } from 'react';
+import { Pressable, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { RootStackParamList, ScreenList } from '../screens/type'
+import { RootStackParamList, ScreenList } from '../screens/type';
 
-type ComponentProps<P> = P & JSX.IntrinsicAttributes
+type ComponentProps<P> = P & JSX.IntrinsicAttributes;
 
 const Link = <P, L extends ScreenList>(
   Component: ComponentType<P>,
@@ -12,11 +12,11 @@ const Link = <P, L extends ScreenList>(
   screenParams?: RootStackParamList[L],
 ) => {
   return function HOC_Link(props: ComponentProps<P>) {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const navigateToScreen = () => {
       // @ts-ignore
-      navigation.navigate(link, screenParams)
-    }
+      navigation.navigate(link, screenParams);
+    };
 
     return (
       <View>
@@ -24,8 +24,8 @@ const Link = <P, L extends ScreenList>(
           <Component {...props} />
         </Pressable>
       </View>
-    )
-  }
-}
+    );
+  };
+};
 
-export default Link
+export default Link;

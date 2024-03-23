@@ -15,7 +15,7 @@ module.exports = {
   jsxSingleQuote: false,
 
   // 파일의 끝에 세미콜론을 추가할지 여부
-  semi: false,
+  semi: true,
 
   // 문자열에서 작은따옴표 대신 큰따옴표를 사용할지 여부
   singleQuote: true,
@@ -29,4 +29,4 @@ module.exports = {
 
   // 들여쓰기에 탭을 사용할지 여부
   useTabs: false,
-}
+};

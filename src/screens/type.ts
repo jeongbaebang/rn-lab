@@ -1,4 +1,4 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
@@ -7,18 +7,18 @@ declare global {
 }
 
 export type RootStackParamList = {
-  Home: undefined
-  Settings: undefined
+  Home: undefined;
+  Settings: undefined;
   Notification: {
-    channel: string
-  }
-}
+    channel: string;
+  };
+};
 
-export type ScreenList = keyof RootStackParamList
+export type ScreenList = keyof RootStackParamList;
 
-export type ScreenProps = NativeStackScreenProps<RootStackParamList>
+export type ScreenProps = NativeStackScreenProps<RootStackParamList>;
 
 export type RootStackScreenProps<T extends ScreenList> = NativeStackScreenProps<
   RootStackParamList,
   T
->
+>;

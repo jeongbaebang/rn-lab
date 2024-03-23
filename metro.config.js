@@ -1,10 +1,10 @@
-const path = require('path')
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
-const { generate } = require('@storybook/react-native/scripts/generate')
+const path = require('path');
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { generate } = require('@storybook/react-native/scripts/generate');
 
 generate({
   configPath: path.resolve(__dirname, './.storybook'),
-})
+});
 
 /**
  * Metro configuration
@@ -22,7 +22,7 @@ const config = {
         context,
         moduleName,
         platform,
-      )
+      );
 
       if (
         process.env.STORYBOOK_ENABLED !== 'true' &&
@@ -30,12 +30,12 @@ const config = {
       ) {
         return {
           type: 'empty',
-        }
+        };
       }
 
-      return defaultResolveResult
+      return defaultResolveResult;
     },
   },
-}
+};
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config)
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

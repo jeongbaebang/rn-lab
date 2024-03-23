@@ -1,19 +1,19 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
 
-import WithLog from './Withlog'
-import Link from './Link'
-import { RootStackParamList, ScreenList } from '../screens/type'
+import WithLog from './Withlog';
+import Link from './Link';
+import { RootStackParamList, ScreenList } from '../screens/type';
 
-type Props = { text: string }
+type Props = { text: string };
 
 const Box: React.FC<Props> = ({ text }) => {
   return (
     <View style={styles.box}>
       <Text style={styles.boxFont}>{text}</Text>
     </View>
-  )
-}
+  );
+};
 
 const theme = {
   box: {
@@ -22,7 +22,7 @@ const theme = {
       color: 'white',
     },
   },
-}
+};
 
 const styles = StyleSheet.create({
   box: {
@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
     color: theme.box.font.color,
     fontSize: 18,
   },
-})
+});
 
-export const BoxWithLog = WithLog(Box)
+export const BoxWithLog = WithLog(Box);
 
 export const LinkToBox = <K extends ScreenList>(
   screen: K,
   Params?: RootStackParamList[K],
-) => Link(Box, screen, Params)
+) => Link(Box, screen, Params);
 
-export default Box
+export default Box;

@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Switch } from 'react-native'
-import React from 'react'
-import useTheme from '@theme/useTheme'
+import { View, Text, StyleSheet, Switch } from 'react-native';
+import React from 'react';
+import useTheme from '@theme/useTheme';
 
 const Settings = () => {
   const {
@@ -12,7 +12,7 @@ const Settings = () => {
       toggleSystemColorScheme,
       updateLocalColorScheme,
     },
-  } = useTheme()
+  } = useTheme();
 
   return (
     <View style={styles.container}>
@@ -23,8 +23,8 @@ const Settings = () => {
           <Text>다크 테마</Text>
           <Switch
             value={isDarkMode}
-            onChange={() => {
-              updateLocalColorScheme('dark')
+            onValueChange={(value) => {
+              updateLocalColorScheme(value ? 'dark' : 'light');
             }}
           />
         </View>
@@ -32,8 +32,8 @@ const Settings = () => {
           <Text>라이트 테마</Text>
           <Switch
             value={!isDarkMode}
-            onValueChange={() => {
-              updateLocalColorScheme('light')
+            onValueChange={(value) => {
+              updateLocalColorScheme(value ? 'light' : 'dark');
             }}
           />
         </View>
@@ -41,22 +41,20 @@ const Settings = () => {
           <Text>시스템 테마 사용하기</Text>
           <Switch
             value={isSystemColorScheme}
-            onValueChange={() => {
-              toggleSystemColorScheme()
-            }}
+            onValueChange={toggleSystemColorScheme}
           />
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const theme = {
   color: {
     background: 'white',
     shadow: '#000',
   },
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -85,6 +83,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-})
+});
 
-export default Settings
+export default Settings;

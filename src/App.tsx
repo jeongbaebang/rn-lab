@@ -1,21 +1,21 @@
-import React from 'react'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { Provider } from 'react-redux';
 
-import { store } from './redux/store'
-import Router from './screens/Router'
+import { store } from './redux/store';
+import Router from './screens/Router';
 
 const App = () => {
   return (
     <Provider store={store}>
       <Router />
     </Provider>
-  )
-}
+  );
+};
 
-let AppEntryPoint = App
+let AppEntryPoint = App;
 
 if (process.env.STORYBOOK_ENABLED) {
-  AppEntryPoint = require('../.storybook').default
+  AppEntryPoint = require('../.storybook').default;
 }
 
-export default AppEntryPoint
+export default AppEntryPoint;
