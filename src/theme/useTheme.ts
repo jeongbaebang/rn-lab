@@ -1,11 +1,12 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useColorScheme } from 'react-native'
 
 import { useAppDispatch, useAppSelector } from '../hooks/useAppRedux'
 import {
-  updateIsUseSystemColorScheme,
+  ColorScheme,
+  onSystemColorScheme,
   updateLocalColorScheme,
 } from './themeSlice'
-import { useColorScheme } from 'react-native'
 
 /**
  * `useTheme` 훅을 사용하여 애플리케이션의 테마 상태를 관리합니다.
@@ -37,36 +38,29 @@ import { useColorScheme } from 'react-native'
  */
 
 const useTheme = () => {
-  const colorScheme = useColorScheme()
+  const systemColorScheme = useColorScheme()
   const dispatch = useAppDispatch()
   const { localColorScheme, styleSystem, isSystemColorScheme } = useAppSelector(
     (state) => state.theme,
   )
-  const isDarkMode = localColorScheme === 'dark'
-  const dispatchLightColorScheme = useCallback(() => {
-    dispatch(updateLocalColorScheme('light'))
-  }, [dispatch])
-  const dispatchDarkColorScheme = useCallback(() => {
-    dispatch(updateLocalColorScheme('dark'))
-  }, [dispatch])
-  const dispatchSystemColorScheme = useCallback(() => {
-    dispatch(updateIsUseSystemColorScheme())
-  }, [dispatch])
+  const dispatchColorScheme = (colorScheme: ColorScheme) =>
+    dispatch(updateLocalColorScheme(colorScheme))
+  const dispatchSystemColorScheme = () => dispatch(onSystemColorScheme())
 
   useEffect(() => {
     if (isSystemColorScheme) {
-      dispatch(updateLocalColorScheme(colorScheme))
+      dispatch(updateLocalColorScheme(systemColorScheme))
     }
-  }, [dispatch, isSystemColorScheme, colorScheme])
+  }, [dispatch, isSystemColorScheme, systemColorScheme])
 
   return {
     colorScheme: {
-      isDarkMode,
+      isDarkMode: localColorScheme === 'dark',
       isSystemColorScheme,
-      colorScheme: localColorScheme,
-      onDarkMode: dispatchDarkColorScheme,
-      onLightMode: dispatchLightColorScheme,
-      onSystemColorScheme: dispatchSystemColorScheme,
+      systemColorScheme,
+      localColorScheme,
+      updateLocalColorScheme: dispatchColorScheme,
+      toggleSystemColorScheme: dispatchSystemColorScheme,
     },
     theme: {
       font: styleSystem.font,

@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Appearance, ColorSchemeName } from 'react-native'
 import styleSystem, { Style } from './style'
 
-type ColorScheme = 'light' | 'dark'
+export type ColorScheme = 'light' | 'dark'
 
 type ThemeState = {
   isSystemColorScheme: boolean
@@ -24,13 +24,13 @@ export const themeSlice = createSlice({
     updateLocalColorScheme: (state, action: PayloadAction<ColorSchemeName>) => {
       state.localColorScheme = action.payload || 'light' // 기본값 지정
     },
-    updateIsUseSystemColorScheme: (state) => {
+    onSystemColorScheme: (state) => {
       state.isSystemColorScheme = !state.isSystemColorScheme
     },
   },
 })
 
-export const { updateIsUseSystemColorScheme, updateLocalColorScheme } =
+export const { onSystemColorScheme, updateLocalColorScheme } =
   themeSlice.actions
 
 export default themeSlice.reducer
