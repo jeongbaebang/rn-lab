@@ -1,38 +1,49 @@
-import { View, Text, StyleSheet, Switch, useColorScheme } from 'react-native'
+import { View, Text, StyleSheet, Switch } from 'react-native'
 import React from 'react'
 import useTheme from '@theme/useTheme'
 
 const Settings = () => {
   const {
     colorScheme: {
-      colorScheme,
+      systemColorScheme,
+      localColorScheme,
       isDarkMode,
       isSystemColorScheme,
-      onDarkMode,
-      onLightMode,
-      onSystemColorScheme,
+      toggleSystemColorScheme,
+      updateLocalColorScheme,
     },
   } = useTheme()
-  const systemColorScheme = useColorScheme()
 
   return (
     <View style={styles.container}>
       <View style={styles.section}>
         <Text>시스템(네이티브) 컬러 스킴: {systemColorScheme}</Text>
-        <Text>현재 컬러 스킴: {colorScheme}</Text>
+        <Text>현재 컬러 스킴: {localColorScheme}</Text>
         <View style={styles.switch}>
           <Text>다크 테마</Text>
-          <Switch value={isDarkMode} onValueChange={onDarkMode} />
+          <Switch
+            value={isDarkMode}
+            onChange={() => {
+              updateLocalColorScheme('dark')
+            }}
+          />
         </View>
         <View style={styles.switch}>
           <Text>라이트 테마</Text>
-          <Switch value={!isDarkMode} onValueChange={onLightMode} />
+          <Switch
+            value={!isDarkMode}
+            onValueChange={() => {
+              updateLocalColorScheme('light')
+            }}
+          />
         </View>
         <View style={styles.switch}>
           <Text>시스템 테마 사용하기</Text>
           <Switch
             value={isSystemColorScheme}
-            onValueChange={onSystemColorScheme}
+            onValueChange={() => {
+              toggleSystemColorScheme()
+            }}
           />
         </View>
       </View>
