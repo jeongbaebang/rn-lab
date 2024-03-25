@@ -180,4 +180,4 @@ ios/.xcode.env.local
 .metro-health-check*
 
 # 테스트 커버리지
-/coverage
+coverage

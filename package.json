@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watchAll",
+    "coverage": "jest --coverage",
     "start": "react-native start",
     "debugging": "react-native start --experimental-debugger",
     "devTools": "npx react-devtools",
