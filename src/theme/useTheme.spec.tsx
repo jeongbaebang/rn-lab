@@ -5,12 +5,16 @@ import { Provider } from 'react-redux';
 import useTheme from './useTheme';
 import { store } from '../redux/store';
 
+let mockFn: jest.Mock;
+
 jest.mock('react-native', () => {
+  mockFn = jest.fn(() => 'dark');
+
   return {
     __esModule: true,
-    useColorScheme: () => 'dark',
+    useColorScheme: mockFn,
     Appearance: {
-      getColorScheme: () => 'dark',
+      getColorScheme: mockFn,
     },
   };
 });
