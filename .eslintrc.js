@@ -3,7 +3,8 @@
 
 module.exports = {
   root: true,
-  ignorePatterns: ['jest.*.js'],
+
+  ignorePatterns: ['jest.*.js', 'coverage'],
   plugins: ['prettier', 'react', 'react-native', 'react-hooks'],
   extends: [
     '@react-native',
