@@ -14,7 +14,7 @@ const App = () => {
 
 let AppEntryPoint = App;
 
-if (process.env.STORYBOOK_ENABLED) {
+if (process.env.STORYBOOK_ENABLED === 'true') {
   AppEntryPoint = require('../.storybook').default;
 }
 
