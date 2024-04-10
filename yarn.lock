@@ -2464,6 +2464,15 @@
     "@storybook/manager-api" "^7.6.13"
     fast-deep-equal "^2.0.1"
 
+"@storybook/addon-ondevice-backgrounds@^7.6.17":
+  version "7.6.17"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-ondevice-backgrounds/-/addon-ondevice-backgrounds-7.6.17.tgz#3d437d2343ffb4aa57c57fa99ce01ec99daef048"
+  integrity sha512-bbN5CkhCp8fhgrudsLTt4gwyFLMEnGrFSIe2T1NIsqJHkl7q/2jpQkJwVj+sEy3mGVdxUWUVJ5nV1/HUgqFafg==
+  dependencies:
+    "@storybook/manager-api" "^7.6.13"
+    "@storybook/preview-api" "^7.6.13"
+    "@storybook/react-native-theming" "^7.6.17"
+
 "@storybook/addon-ondevice-controls@^7.6.17":
   version "7.6.17"
   resolved "https://registry.yarnpkg.com/@storybook/addon-ondevice-controls/-/addon-ondevice-controls-7.6.17.tgz#e49cd67133c86ad5b5bad37e0497a3ed1df0d15b"

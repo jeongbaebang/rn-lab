@@ -14,6 +14,7 @@ const HomeScreen = (_props: ScreenProps) => {
   const { theme } = useTheme();
   const LinkToSettingBox = LinkToBox('Settings');
   const LinkToNotificationBox = LinkToBox('Notification');
+  const LinkToFetchBox = LinkToBox('Fetch');
 
   return (
     <View
@@ -26,6 +27,7 @@ const HomeScreen = (_props: ScreenProps) => {
       <View style={styles.boxContainer}>
         <LinkToSettingBox text="goSetting" />
         <LinkToNotificationBox text="goNotification" />
+        <LinkToFetchBox text="goFetch" />
       </View>
     </View>
   );

@@ -45,17 +45,6 @@ describe('Link Component', () => {
     expect(mockedNavigate).toHaveBeenCalledWith(expectedLink, undefined);
   });
 
-  test('props가 전달되었을 때, 자식 컴포넌트는 전달받은 props를 사용하여 정상적으로 렌더링되어야 한다.', () => {
-    const childrenProps = 'new children Props';
-    const NewComponent = Link(TestComponentWithProps, expectedLink);
-
-    const TargetComponent = render(
-      <NewComponent text={childrenProps} />,
-    ).getByText(childrenProps);
-
-    expect(TargetComponent).toBeOnTheScreen();
-  });
-
   test('네비게이션 수행 시, Link 컴포넌트에 전달된 추가 파라미터는 네비게이터 함수 호출에 포함되어야 한다.', async () => {
     const user = userEvent.setup();
     const childrenProps = 'new children Props';
@@ -74,5 +63,16 @@ describe('Link Component', () => {
     await user.press(TargetComponent);
 
     expect(mockedNavigate).toHaveBeenCalledWith(expectedLink, newParm);
+  });
+
+  test('props가 전달되었을 때, 자식 컴포넌트는 전달받은 props를 사용하여 정상적으로 렌더링되어야 한다.', () => {
+    const childrenProps = 'new children Props';
+    const NewComponent = Link(TestComponentWithProps, expectedLink);
+
+    const TargetComponent = render(
+      <NewComponent text={childrenProps} />,
+    ).getByText(childrenProps);
+
+    expect(TargetComponent).toBeOnTheScreen();
   });
 });
