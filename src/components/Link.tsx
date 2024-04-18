@@ -20,7 +20,7 @@ const Link = <P, L extends ScreenList>(
 
     return (
       <View>
-        <Pressable onPress={navigateToScreen}>
+        <Pressable onPress={navigateToScreen} testID="TestID_goSetting_Box">
           <Component {...props} />
         </Pressable>
       </View>
