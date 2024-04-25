@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Observer Interface
 type Observer = {
   name: string;
@@ -67,3 +68,57 @@ const observerFetch = new LogObserver('Observer 2');
 
 subject.addObserver(observer1);
 subject.addObserver(observerFetch);
+
+const ValueCell = <T>(initialValue: T) => {
+  let currentValue = initialValue;
+  const observer: ((w: T) => void)[] = [];
+
+  return {
+    val: () => {
+      return currentValue;
+    },
+    update: (f: (value: T) => T) => {
+      const oldValue = currentValue;
+      const newValue = f(oldValue);
+
+      if (oldValue !== newValue) {
+        currentValue = newValue;
+
+        observer.forEach((watcher) => {
+          watcher(newValue);
+        });
+      }
+    },
+    addWatcher: (f: (w: T) => void) => {
+      observer.push(f);
+    },
+  };
+};
+
+type UpstreamCell<T> = {
+  val: () => T;
+  addWatcher: (f: (w: T) => void) => void;
+};
+
+const FormulaCell = <T>(upstreamCell: UpstreamCell<T>, f: (v: T) => T) => {
+  const myCell = ValueCell(f(upstreamCell.val()));
+
+  upstreamCell.addWatcher((newUpstreamValue) => {
+    myCell.update((_currentValue) => {
+      return f(newUpstreamValue);
+    });
+  });
+
+  return {
+    val: myCell.val,
+    addWatcher: myCell.addWatcher,
+  };
+};
+
+const shoppingCart = ValueCell<{ name: string; price: number }[]>([]);
+
+shoppingCart.addWatcher(console.log);
+
+shoppingCart.update((arr) => {
+  return arr.concat({ name: 'aa', price: 1 });
+});

@@ -13,6 +13,7 @@ export type RootStackParamList = {
     channel: string;
   };
   Fetch: undefined;
+  List: undefined;
 };
 
 export type ScreenList = keyof RootStackParamList;

@@ -4,7 +4,7 @@ const preview: Preview = {
   decorators: [withBackgrounds],
   parameters: {
     backgrounds: {
-      default: 'warm',
+      default: 'white',
       values: [
         { name: 'warm', value: 'hotpink' },
         { name: 'cool', value: 'deepskyblue' },
