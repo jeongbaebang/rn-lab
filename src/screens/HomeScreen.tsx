@@ -5,15 +5,30 @@ import useTheme from '../theme/useTheme';
 import { ScreenProps } from './type';
 import { LinkToBox } from '@components/Box';
 
-/**
- * TODO
- *
- * 1. 페이지 네비게이션 HOC 구성 해보기 [v]
- */
+// i18n.use(initReactI18next).init({
+
+//   resources: {
+//     en: {
+//       translation: {
+//         'Welcome to React': 'Welcome to React and React-i18Next!',
+//       },
+//     },
+//   },
+
+//   lng: 'en',
+//   fallbackLng: 'en',
+//   interpolation: {
+//     escapeValue: false,
+//   },
+
+// });
+
 const HomeScreen = (_props: ScreenProps) => {
   const { theme } = useTheme();
   const LinkToSettingBox = LinkToBox('Settings');
   const LinkToNotificationBox = LinkToBox('Notification');
+  const LinkToFetchBox = LinkToBox('Fetch');
+  const LinkToListBox = LinkToBox('List');
 
   return (
     <View
@@ -26,6 +41,8 @@ const HomeScreen = (_props: ScreenProps) => {
       <View style={styles.boxContainer}>
         <LinkToSettingBox text="goSetting" />
         <LinkToNotificationBox text="goNotification" />
+        <LinkToFetchBox text="goFetch" />
+        <LinkToListBox text="goList" />
       </View>
     </View>
   );

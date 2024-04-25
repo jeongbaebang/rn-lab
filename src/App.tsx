@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 
 import { store } from './redux/store';
 import Router from './screens/Router';
+import { DevSettings } from 'react-native';
 
 const App = () => {
   return (
@@ -14,8 +15,12 @@ const App = () => {
 
 let AppEntryPoint = App;
 
-if (process.env.STORYBOOK_ENABLED) {
+if (process.env.STORYBOOK_ENABLED === 'true') {
   AppEntryPoint = require('../.storybook').default;
 }
+
+DevSettings.addMenuItem('goStorybook', () => {
+  AppEntryPoint = require('../.storybook').default;
+});
 
 export default AppEntryPoint;
