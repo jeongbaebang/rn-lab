@@ -16,6 +16,14 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
 
+      # Corepack 활성화
+      - name: Enable Corepack
+        run: corepack enable
+
+      # Yarn 버전 확인 (선택적)
+      - name: Check Yarn Version
+        run: yarn --version
+
       - name: Install Dependencies
         run: yarn install
 
