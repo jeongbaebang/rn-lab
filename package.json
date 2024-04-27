@@ -5,6 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "check-dependencies": "rnx-align-deps",
+    "fix-dependencies": "rnx-align-deps --write",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
@@ -21,6 +23,7 @@
     "@react-native/eslint-config": "0.74.81",
     "@react-native/metro-config": "0.74.81",
     "@react-native/typescript-config": "0.74.81",
+    "@rnx-kit/align-deps": "^2.4.4",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
@@ -33,5 +36,23 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.6.4",
+  "rnx-kit": {
+    "kitType": "app",
+    "alignDeps": {
+      "requirements": [
+        "react-native@0.74"
+      ],
+      "capabilities": [
+        "babel-preset-react-native",
+        "core",
+        "core-android",
+        "core-ios",
+        "core/metro-config",
+        "jest",
+        "react",
+        "react-test-renderer"
+      ]
+    }
+  }
 }

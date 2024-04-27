@@ -2565,6 +2565,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rnx-kit/align-deps@npm:^2.4.4":
+  version: 2.4.4
+  resolution: "@rnx-kit/align-deps@npm:2.4.4"
+  bin:
+    rnx-align-deps: lib/index.js
+  checksum: 22f6886a2859102ace7f456ae3f9a73a0f672af8649b0b85c62483e794d8f3b41f59869c4a91b1acf04e60119b12923e6181ffb0b381e1582b9146f2eb925463
+  languageName: node
+  linkType: hard
+
 "@rnx-kit/chromium-edge-launcher@npm:^1.0.0":
   version: 1.0.0
   resolution: "@rnx-kit/chromium-edge-launcher@npm:1.0.0"
@@ -8316,6 +8325,7 @@ __metadata:
     "@react-native/eslint-config": 0.74.81
     "@react-native/metro-config": 0.74.81
     "@react-native/typescript-config": 0.74.81
+    "@rnx-kit/align-deps": ^2.4.4
     "@types/react": ^18.2.6
     "@types/react-test-renderer": ^18.0.0
     babel-jest: ^29.6.3
